@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLP Readiness Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn-purple {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .btn-purple:hover {
+            background: #7c3aed;
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .customer-info {
+            background: #eff6ff;
+            border: 2px solid #93c5fd;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .customer-info h2 {
+            margin-bottom: 20px;
+            color: #1e40af;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .progress-tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .progress-tab {
+            flex: 1;
+            min-width: 120px;
+            padding: 10px;
+            background: #e5e7eb;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .progress-tab.active {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .section-weight {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .criteria-card {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .criteria-question {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 15px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: start;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .radio-option:hover {
+            background: white;
+        }
+
+        .radio-option input {
+            margin-right: 12px;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .radio-option label {
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .results-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .score-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .score-value {
+            font-size: 72px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .readiness-level {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .category-card {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .category-name {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .category-weight {
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        .progress-bar-small {
+            width: 100%;
+            height: 12px;
+            background: #e5e7eb;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #3b82f6;
+            transition: width 0.5s;
+        }
+
+        .category-scores {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .recommendations-card {
+            background: #eff6ff;
+            border: 2px solid #93c5fd;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .recommendations-card h3 {
+            color: #1e40af;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .recommendations-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .recommendations-card li {
+            padding: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .recommendations-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-size: 20px;
+        }
+
+        .timeline-box {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .export-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .export-highlight {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .export-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .dashboard {
+            padding: 40px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #eff6ff;
+            border: 2px solid #93c5fd;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .submission-card {
+            border: 2px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submission-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .submission-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .submission-score {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .submission-details {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            background: #f9fafb;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+        }
+
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // Application State
+        const state = {
+            scores: {},
+            currentSection: 0,
+            customerInfo: {
+                companyName: '',
+                contactPerson: '',
+                email: '',
+                phone: ''
+            },
+            viewMode: 'assessment', // 'assessment' or 'dashboard'
+            submissions: [],
+            isSubmitting: false,
+            submitStatus: ''
+        };
+
+        // Assessment Categories Data
+        const assessmentCategories = [
+            {
+                name: "Infrastructure Maturity",
+                weight: 15,
+                criteria: [
+                    { 
+                        id: 'inf1', 
+                        question: 'Device inventory and management', 
+                        levels: {
+                            1: 'No inventory maintained',
+                            2: 'Basic spreadsheet tracking',
+                            3: 'Partial automated inventory',
+                            4: 'Comprehensive automated inventory',
+                            5: 'Real-time asset management with lifecycle tracking'
+                        }
+                    },
+                    { 
+                        id: 'inf2', 
+                        question: 'Operating system standardization', 
+                        levels: {
+                            1: 'Multiple unmanaged OS versions',
+                            2: 'Some standardization, many legacy systems',
+                            3: 'Mostly standardized with update plan',
+                            4: 'Fully standardized with regular updates',
+                            5: 'Automated patch management and compliance'
+                        }
+                    },
+                    { 
+                        id: 'inf3', 
+                        question: 'Network infrastructure', 
+                        levels: {
+                            1: 'No network segmentation',
+                            2: 'Basic router/switch setup',
+                            3: 'VLAN segmentation implemented',
+                            4: 'Proper network zones with firewall rules',
+                            5: 'Zero-trust architecture with micro-segmentation'
+                        }
+                    },
+                    { 
+                        id: 'inf4', 
+                        question: 'Server infrastructure', 
+                        levels: {
+                            1: 'No dedicated servers',
+                            2: 'Basic file server only',
+                            3: 'Multiple servers with basic management',
+                            4: 'Virtualized environment with backup',
+                            5: 'Hybrid cloud with HA and DR'
+                        }
+                    }
+                ]
+            },
+            {
+                name: "Data Management",
+                weight: 20,
+                criteria: [
+                    { 
+                        id: 'data1', 
+                        question: 'Data classification system', 
+                        levels: {
+                            1: 'No classification',
+                            2: 'Informal understanding of sensitive data',
+                            3: 'Basic classification policy exists',
+                            4: 'Documented classification with labels',
+                            5: 'Automated classification and tagging'
+                        }
+                    },
+                    { 
+                        id: 'data2', 
+                        question: 'Data storage practices', 
+                        levels: {
+                            1: 'Uncontrolled storage across devices',
+                            2: 'Central storage but no access control',
+                            3: 'Controlled storage with basic permissions',
+                            4: 'Role-based access with encryption',
+                            5: 'DLP-ready with data cataloging and lineage'
+                        }
+                    },
+                    { 
+                        id: 'data3', 
+                        question: 'Backup and recovery', 
+                        levels: {
+                            1: 'No backup system',
+                            2: 'Irregular manual backups',
+                            3: 'Scheduled backups to single location',
+                            4: 'Automated backups with offsite storage',
+                            5: 'Continuous backup with tested DR plan'
+                        }
+                    },
+                    { 
+                        id: 'data4', 
+                        question: 'Data retention policies', 
+                        levels: {
+                            1: 'No retention policy',
+                            2: 'Informal data deletion practices',
+                            3: 'Basic retention guidelines',
+                            4: 'Documented retention policy',
+                            5: 'Automated retention with compliance tracking'
+                        }
+                    }
+                ]
+            },
+            {
+                name: "Security Posture",
+                weight: 20,
+                criteria: [
+                    { 
+                        id: 'sec1', 
+                        question: 'Endpoint protection', 
+                        levels: {
+                            1: 'No antivirus or protection',
+                            2: 'Basic antivirus on some devices',
+                            3: 'Antivirus on all devices',
+                            4: 'Endpoint Detection and Response (EDR)',
+                            5: 'Advanced threat protection with AI/ML'
+                        }
+                    },
+                    { 
+                        id: 'sec2', 
+                        question: 'Access control mechanisms', 
+                        levels: {
+                            1: 'Shared passwords, no access control',
+                            2: 'Individual accounts, basic passwords',
+                            3: 'Strong password policy enforced',
+                            4: 'MFA implemented for critical systems',
+                            5: 'Zero-trust with MFA, SSO, and PAM'
+                        }
+                    },
+                    { 
+                        id: 'sec3', 
+                        question: 'Encryption usage', 
+                        levels: {
+                            1: 'No encryption',
+                            2: 'Encryption for some external communications',
+                            3: 'HTTPS and email encryption',
+                            4: 'Disk encryption on endpoints',
+                            5: 'End-to-end encryption everywhere'
+                        }
+                    },
+                    { 
+                        id: 'sec4', 
+                        question: 'Security monitoring', 
+                        levels: {
+                            1: 'No monitoring',
+                            2: 'Basic firewall logs',
+                            3: 'Centralized log collection',
+                            4: 'SIEM with basic correlation',
+                            5: 'Advanced SIEM with SOC and incident response'
+                        }
+                    }
+                ]
+            },
+            {
+                name: "Mobile & Remote Access",
+                weight: 15,
+                criteria: [
+                    { 
+                        id: 'mobile1', 
+                        question: 'Mobile device management', 
+                        levels: {
+                            1: 'No mobile device control',
+                            2: 'BYOD with no management',
+                            3: 'Basic email on mobile devices',
+                            4: 'MDM for company devices',
+                            5: 'Comprehensive UEM for all endpoints'
+                        }
+                    },
+                    { 
+                        id: 'mobile2', 
+                        question: 'Remote access security', 
+                        levels: {
+                            1: 'No remote access or unsecured',
+                            2: 'Basic VPN without MFA',
+                            3: 'VPN with password authentication',
+                            4: 'VPN with MFA and split tunneling',
+                            5: 'Zero-trust network access (ZTNA)'
+                        }
+                    },
+                    { 
+                        id: 'mobile3', 
+                        question: 'BYOD policy and control', 
+                        levels: {
+                            1: 'No policy, uncontrolled BYOD',
+                            2: 'Informal BYOD usage',
+                            3: 'BYOD policy exists but not enforced',
+                            4: 'BYOD with containerization',
+                            5: 'Complete BYOD management with data separation'
+                        }
+                    }
+                ]
+            },
+            {
+                name: "Policy & Compliance",
+                weight: 15,
+                criteria: [
+                    { 
+                        id: 'policy1', 
+                        question: 'Security policies and documentation', 
+                        levels: {
+                            1: 'No documented policies',
+                            2: 'Some informal guidelines',
+                            3: 'Basic security policy document',
+                            4: 'Comprehensive policy framework',
+                            5: 'Living policies with regular reviews and updates'
+                        }
+                    },
+                    { 
+                        id: 'policy2', 
+                        question: 'Compliance requirements', 
+                        levels: {
+                            1: 'No compliance considerations',
+                            2: 'Aware of requirements but not compliant',
+                            3: 'Working towards compliance',
+                            4: 'Mostly compliant with gaps',
+                            5: 'Fully compliant with certifications'
+                        }
+                    },
+                    { 
+                        id: 'policy3', 
+                        question: 'User training and awareness', 
+                        levels: {
+                            1: 'No security training',
+                            2: 'One-time onboarding briefing',
+                            3: 'Annual security awareness training',
+                            4: 'Quarterly training with phishing tests',
+                            5: 'Continuous training with gamification'
+                        }
+                    },
+                    { 
+                        id: 'policy4', 
+                        question: 'Incident response capability', 
+                        levels: {
+                            1: 'No incident response plan',
+                            2: 'Reactive, ad-hoc responses',
+                            3: 'Basic incident response procedure',
+                            4: 'Documented IR plan with defined roles',
+                            5: 'Mature IR program with regular drills'
+                        }
+                    }
+                ]
+            },
+            {
+                name: "Data Flow & Control",
+                weight: 15,
+                criteria: [
+                    { 
+                        id: 'flow1', 
+                        question: 'Data transfer monitoring', 
+                        levels: {
+                            1: 'No visibility into data transfers',
+                            2: 'Aware of some data movements',
+                            3: 'Basic logging of file transfers',
+                            4: 'Monitoring of email and cloud uploads',
+                            5: 'Comprehensive DLP monitoring all channels'
+                        }
+                    },
+                    { 
+                        id: 'flow2', 
+                        question: 'Removable media control', 
+                        levels: {
+                            1: 'Unrestricted USB and media usage',
+                            2: 'Informal restrictions',
+                            3: 'USB blocking on some systems',
+                            4: 'Centrally managed USB policies',
+                            5: 'Complete device control with encryption requirement'
+                        }
+                    },
+                    { 
+                        id: 'flow3', 
+                        question: 'Cloud application usage', 
+                        levels: {
+                            1: 'Uncontrolled shadow IT',
+                            2: 'Some approved cloud services',
+                            3: 'Cloud app inventory maintained',
+                            4: 'CASB or cloud monitoring tool',
+                            5: 'Integrated cloud DLP with API controls'
+                        }
+                    },
+                    { 
+                        id: 'flow4', 
+                        question: 'Email security and control', 
+                        levels: {
+                            1: 'No email filtering or control',
+                            2: 'Basic spam filtering',
+                            3: 'Email gateway with attachment filtering',
+                            4: 'Email DLP with content inspection',
+                            5: 'Advanced email security with encryption and ATP'
+                        }
+                    }
+                ]
+            }
+        ];
+
+        // Helper Functions
+        function calculateCategoryScore(category) {
+            const categoryScores = category.criteria
+                .map(c => state.scores[c.id] || 0)
+                .filter(s => s > 0);
+            
+            if (categoryScores.length === 0) return 0;
+            const avg = categoryScores.reduce((a, b) => a + b, 0) / category.criteria.length;
+            return (avg / 5) * 100;
+        }
+
+        function calculateWeightedScore(category) {
+            const categoryScore = calculateCategoryScore(category);
+            return (categoryScore * category.weight) / 100;
+        }
+
+        function calculateTotalScore() {
+            return assessmentCategories.reduce((total, category) => {
+                return total + calculateWeightedScore(category);
+            }, 0);
+        }
+
+        function getReadinessLevel(score) {
+            if (score >= 80) return { level: 'Advanced', color: '#10b981' };
+            if (score >= 60) return { level: 'Intermediate', color: '#3b82f6' };
+            if (score >= 40) return { level: 'Basic', color: '#f59e0b' };
+            return { level: 'Initial', color: '#ef4444' };
+        }
+
+        function getRecommendations(score) {
+            if (score >= 80) {
+                return {
+                    priority: 'Optimization Phase',
+                    recommendations: [
+                        'Ready for full DLP deployment across all three solutions',
+                        'Focus on advanced features and automation',
+                        'Implement AI-driven threat detection',
+                        'Regular security posture assessments'
+                    ],
+                    timeline: '2-3 months for comprehensive deployment'
+                };
+            } else if (score >= 60) {
+                return {
+                    priority: 'Enhancement Phase',
+                    recommendations: [
+                        'Phased DLP implementation starting with critical data',
+                        'Strengthen endpoint protection with Bitdefender first',
+                        'Deploy 42 Gears for mobile device management',
+                        'Implement basic Data Resolve policies',
+                        'Address identified gaps in parallel'
+                    ],
+                    timeline: '4-6 months with staged rollout'
+                };
+            } else if (score >= 40) {
+                return {
+                    priority: 'Foundation Building',
+                    recommendations: [
+                        'Start with infrastructure improvements',
+                        'Deploy Bitdefender GravityZone for endpoint security',
+                        'Implement basic MDM with 42 Gears',
+                        'Develop data classification framework',
+                        'Create security policies and procedures',
+                        'Postpone full DLP until foundation is solid'
+                    ],
+                    timeline: '6-9 months with prerequisite work'
+                };
+            } else {
+                return {
+                    priority: 'Critical Foundation Required',
+                    recommendations: [
+                        'Significant preparation needed before DLP',
+                        'Focus on basic security hygiene first',
+                        'Implement antivirus and patch management',
+                        'Establish device inventory and management',
+                        'Create basic security policies',
+                        'Consider managed security services initially'
+                    ],
+                    timeline: '9-12 months with extensive groundwork'
+                };
+            }
+        }
+
+        function generateReport() {
+            const totalScore = calculateTotalScore();
+            const readiness = getReadinessLevel(totalScore);
+            const recommendations = getRecommendations(totalScore);
+            
+            let report = `DLP READINESS ASSESSMENT REPORT\n`;
+            report += `${'='.repeat(50)}\n\n`;
+            
+            report += `CUSTOMER INFORMATION:\n`;
+            report += `Company Name: ${state.customerInfo.companyName || 'Not provided'}\n`;
+            report += `Contact Person: ${state.customerInfo.contactPerson || 'Not provided'}\n`;
+            report += `Email: ${state.customerInfo.email || 'Not provided'}\n`;
+            report += `Phone: ${state.customerInfo.phone || 'Not provided'}\n`;
+            report += `Assessment Date: ${new Date().toLocaleDateString()}\n\n`;
+            
+            report += `OVERALL SCORE: ${totalScore.toFixed(1)}/100\n`;
+            report += `READINESS LEVEL: ${readiness.level}\n\n`;
+            
+            report += `CATEGORY BREAKDOWN:\n`;
+            report += `${'-'.repeat(50)}\n`;
+            
+            assessmentCategories.forEach(category => {
+                const categoryScore = calculateCategoryScore(category);
+                const weightedScore = calculateWeightedScore(category);
+                report += `\n${category.name} (Weight: ${category.weight}%)\n`;
+                report += `  Raw Score: ${categoryScore.toFixed(1)}%\n`;
+                report += `  Weighted Contribution: ${weightedScore.toFixed(1)}\n\n`;
+                
+                category.criteria.forEach(criterion => {
+                    const score = state.scores[criterion.id];
+                    if (score) {
+                        report += `  • ${criterion.question}\n`;
+                        report += `    Level ${score}: ${criterion.levels[score]}\n\n`;
+                    }
+                });
+            });
+            
+            report += `\nRECOMMENDATIONS:\n`;
+            report += `${'-'.repeat(50)}\n`;
+            report += `Priority: ${recommendations.priority}\n`;
+            report += `Timeline: ${recommendations.timeline}\n\n`;
+            report += `Action Items:\n`;
+            recommendations.recommendations.forEach((rec, idx) => {
+                report += `${idx + 1}. ${rec}\n`;
+            });
+            
+            return report;
+        }
+
+        // Load EmailJS SDK
+        function loadEmailJS() {
+            return new Promise((resolve, reject) => {
+                if (window.emailjs) {
+                    resolve();
+                    return;
+                }
+                
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+                script.onload = () => {
+                    emailjs.init('5jgCk4LnuRsLuIr_L');
+                    resolve();
+                };
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
+        // Submission Functions
+        async function submitToVendor() {
+            // Validation
+            if (!state.customerInfo.companyName || !state.customerInfo.contactPerson || !state.customerInfo.email) {
+                alert('Please fill in Company Name, Contact Person, and Email before submitting.');
+                return;
+            }
+
+            if (Object.keys(state.scores).length === 0) {
+                alert('Please complete at least some assessment questions before submitting.');
+                return;
+            }
+
+            state.isSubmitting = true;
+            state.submitStatus = 'sending';
+            render();
+
+            try {
+                // Load EmailJS SDK
+                await loadEmailJS();
+
+                const report = generateReport();
+                const totalScore = calculateTotalScore();
+                const readiness = getReadinessLevel(totalScore);
+                const recommendations = getRecommendations(totalScore);
+                const submissionId = `assessment:${Date.now()}_${state.customerInfo.companyName.replace(/\s/g, '_')}`;
+                
+                const submissionData = {
+                    id: submissionId,
+                    customerInfo: state.customerInfo,
+                    scores: state.scores,
+                    totalScore: totalScore.toFixed(1),
+                    readiness_level: readiness.level,
+                    recommendations: recommendations,
+                    fullReport: report,
+                    submittedAt: new Date().toISOString(),
+                    categoryScores: assessmentCategories.map(cat => ({
+                        name: cat.name,
+                        score: calculateCategoryScore(cat).toFixed(1),
+                        weight: cat.weight
+                    }))
+                };
+
+                // Send email directly via EmailJS (from browser)
+                const templateParams = {
+                    name: state.customerInfo.contactPerson,
+                    email: state.customerInfo.email,
+                    company_name: state.customerInfo.companyName,
+                    from_name: state.customerInfo.contactPerson,
+                    from_email: state.customerInfo.email,
+                    phone: state.customerInfo.phone || 'Not provided',
+                    overall_score: totalScore.toFixed(1),
+                    readiness_level: readiness.level,
+                    full_report: report,
+                    message: report
+                };
+
+                // Send email using EmailJS directly from browser
+                const emailResponse = await emailjs.send(
+                    'service_njrk9yx',
+                    'template_kiw6kn3',
+                    templateParams
+                );
+
+                console.log('Email sent successfully:', emailResponse);
+
+                // Store in Cloudflare KV (optional - for dashboard)
+                try {
+                    await fetch('https://dlp-email-proxy.abhijeet-e3e.workers.dev/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            submission_data: JSON.stringify(submissionData)
+                        })
+                    });
+                    await loadAllSubmissions();
+                } catch (storageError) {
+                    console.log('Storage skipped (non-critical):', storageError);
+                }
+
+                state.submitStatus = 'success';
+                alert('✅ Assessment submitted successfully!\n\nYour vendor will receive your submission via email at abhijeet@siriusstar.in');
+                
+            } catch (error) {
+                console.error('Submission error:', error);
+                state.submitStatus = 'error';
+                
+                let errorMsg = '❌ Submission Failed: ' + (error.text || error.message) + '\n\n';
+                errorMsg += 'Please try these manual options:\n\n';
+                errorMsg += '1. Click "Download Report" button below\n';
+                errorMsg += '2. Email the file to: abhijeet@siriusstar.in\n\n';
+                errorMsg += 'OR\n\n';
+                errorMsg += 'Click "Copy to Clipboard" and send via WhatsApp';
+                
+                alert(errorMsg);
+            } finally {
+                state.isSubmitting = false;
+                render();
+            }
+        }
+
+        async function loadAllSubmissions() {
+            try {
+                const response = await fetch('https://dlp-email-proxy.abhijeet-e3e.workers.dev/');
+                if (response.ok) {
+                    const data = await response.json();
+                    state.submissions = data.submissions || [];
+                }
+            } catch (error) {
+                console.log('Could not load submissions:', error);
+                state.submissions = [];
+            }
+            render();
+        }
+
+        function downloadReport() {
+            const report = generateReport();
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `DLP_Assessment_${state.customerInfo.companyName || 'Report'}_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function copyToClipboard() {
+            const report = generateReport();
+            navigator.clipboard.writeText(report).then(() => {
+                alert('Assessment report copied to clipboard!');
+            });
+        }
+
+        // Render Functions
+        function renderCustomerInfo() {
+            return `
+                <div class="customer-info">
+                    <h2>Customer Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Company Name *</label>
+                            <input type="text" id="companyName" value="${state.customerInfo.companyName}" 
+                                   placeholder="Enter company name" onchange="updateCustomerInfo('companyName', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Person *</label>
+                            <input type="text" id="contactPerson" value="${state.customerInfo.contactPerson}" 
+                                   placeholder="Enter contact name" onchange="updateCustomerInfo('contactPerson', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="email" value="${state.customerInfo.email}" 
+                                   placeholder="email@company.com" onchange="updateCustomerInfo('email', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" id="phone" value="${state.customerInfo.phone}" 
+                                   placeholder="+91 XXXXX XXXXX" onchange="updateCustomerInfo('phone', this.value)">
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProgressTabs() {
+            return `
+                <div class="progress-tabs">
+                    ${assessmentCategories.map((cat, idx) => `
+                        <button class="progress-tab ${idx === state.currentSection ? 'active' : ''}" 
+                                onclick="changeSection(${idx})">
+                            ${cat.name}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderCurrentSection() {
+            const category = assessmentCategories[state.currentSection];
+            return `
+                <div>
+                    <h2 class="section-title">${category.name}</h2>
+                    <p class="section-weight">Weight: ${category.weight}%</p>
+                    
+                    ${category.criteria.map(criterion => `
+                        <div class="criteria-card">
+                            <h3 class="criteria-question">${criterion.question}</h3>
+                            <div class="radio-group">
+                                ${[1, 2, 3, 4, 5].map(level => `
+                                    <div class="radio-option">
+                                        <input type="radio" 
+                                               id="${criterion.id}_${level}" 
+                                               name="${criterion.id}" 
+                                               value="${level}"
+                                               ${state.scores[criterion.id] === level ? 'checked' : ''}
+                                               onchange="updateScore('${criterion.id}', ${level})">
+                                        <label for="${criterion.id}_${level}">
+                                            <strong>Level ${level}:</strong> ${criterion.levels[level]}
+                                        </label>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                    
+                    <div class="navigation">
+                        <button class="btn btn-secondary" 
+                                ${state.currentSection === 0 ? 'disabled' : ''}
+                                onclick="changeSection(${state.currentSection - 1})">
+                            Previous
+                        </button>
+                        <button class="btn btn-primary" 
+                                ${state.currentSection === assessmentCategories.length - 1 ? 'disabled' : ''}
+                                onclick="changeSection(${state.currentSection + 1})">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderResults() {
+            const totalScore = calculateTotalScore();
+            const readiness = getReadinessLevel(totalScore);
+            const recommendations = getRecommendations(totalScore);
+            const completedAssessments = Object.keys(state.scores).length;
+            const totalAssessments = assessmentCategories.reduce((sum, cat) => sum + cat.criteria.length, 0);
+
+            return `
+                <div class="results-section">
+                    <h2 style="margin-bottom: 30px; font-size: 28px;">Assessment Results</h2>
+                    
+                    <div class="score-card" style="background: ${readiness.color};">
+                        <h3>Overall Readiness Score</h3>
+                        <div class="score-value">${totalScore.toFixed(1)}</div>
+                        <div class="readiness-level">${readiness.level}</div>
+                        <p style="margin-top: 20px;">Completed: ${completedAssessments} / ${totalAssessments} assessments</p>
+                    </div>
+                    
+                    <div class="category-grid">
+                        ${assessmentCategories.map(category => {
+                            const categoryScore = calculateCategoryScore(category);
+                            const weightedScore = calculateWeightedScore(category);
+                            return `
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-name">${category.name}</div>
+                                        <div class="category-weight">Weight: ${category.weight}%</div>
+                                    </div>
+                                    <div class="progress-bar-small">
+                                        <div class="progress-fill" style="width: ${categoryScore}%;"></div>
+                                    </div>
+                                    <div class="category-scores">
+                                        <span>Score: ${categoryScore.toFixed(1)}%</span>
+                                        <span>Weighted: ${weightedScore.toFixed(1)}</span>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    
+                    <div class="recommendations-card">
+                        <h3>${recommendations.priority}</h3>
+                        <h4 style="color: #374151; margin-bottom: 15px;">Recommended Actions:</h4>
+                        <ul>
+                            ${recommendations.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                        </ul>
+                        <div class="timeline-box">
+                            <strong>Estimated Timeline:</strong> ${recommendations.timeline}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderExportSection() {
+            const hasScores = Object.keys(state.scores).length > 0;
+            
+            return `
+                <div class="export-section">
+                    <h3 style="margin-bottom: 20px; font-size: 24px;">Submit Assessment to Vendor</h3>
+                    
+                    <div class="export-highlight">
+                        <h4 style="margin-bottom: 15px; font-size: 18px;">📧 Direct Submission (Recommended)</h4>
+                        <p style="margin-bottom: 20px;">
+                            Click below to automatically send your completed assessment directly to your vendor's email. 
+                            You'll receive a confirmation once submitted.
+                        </p>
+                        <button class="btn btn-success" 
+                                style="font-size: 18px; padding: 15px 30px;"
+                                ${!hasScores || state.isSubmitting ? 'disabled' : ''}
+                                onclick="submitToVendor()">
+                            ${state.isSubmitting ? '<span class="loading"></span> Submitting...' : '✉️ Submit to Vendor'}
+                        </button>
+                        
+                        ${state.submitStatus === 'success' ? `
+                            <div class="alert alert-success">
+                                ✅ Successfully submitted! Your vendor will contact you soon.
+                            </div>
+                        ` : ''}
+                        
+                        ${state.submitStatus === 'error' ? `
+                            <div class="alert alert-error">
+                                ❌ Submission failed. Please use manual options below.
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <h4 style="margin: 30px 0 15px 0;">Alternative Options:</h4>
+                    <p style="color: #6b7280; margin-bottom: 15px;">
+                        If automatic submission doesn't work, you can use these manual methods:
+                    </p>
+                    
+                    <div class="export-buttons">
+                        <button class="btn btn-primary" ${!hasScores ? 'disabled' : ''} onclick="downloadReport()">
+                            📥 Download Report
+                        </button>
+                        <button class="btn btn-purple" ${!hasScores ? 'disabled' : ''} onclick="copyToClipboard()">
+                            📋 Copy to Clipboard
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDashboard() {
+            const readyCount = state.submissions.filter(s => parseFloat(s.totalScore) >= 60).length;
+            const needPrepCount = state.submissions.filter(s => parseFloat(s.totalScore) < 60).length;
+
+            return `
+                <div class="dashboard">
+                    <div class="dashboard-header">
+                        <div>
+                            <h1>Vendor Dashboard</h1>
+                            <p class="subtitle">View all customer DLP assessments</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="switchView('assessment')">
+                            Back to Assessment
+                        </button>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" style="color: #3b82f6;">${state.submissions.length}</div>
+                            <div class="stat-label">Total Submissions</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" style="color: #10b981;">${readyCount}</div>
+                            <div class="stat-label">Ready for DLP</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" style="color: #f59e0b;">${needPrepCount}</div>
+                            <div class="stat-label">Need Preparation</div>
+                        </div>
+                    </div>
+                    
+                    ${state.submissions.length === 0 ? `
+                        <div class="empty-state">
+                            <div class="empty-icon">📊</div>
+                            <p style="font-size: 20px; margin-bottom: 10px;">No submissions yet</p>
+                            <p>Customer assessments will appear here</p>
+                        </div>
+                    ` : `
+                        <div>
+                            ${state.submissions.map((submission, idx) => {
+                                const score = parseFloat(submission.totalScore);
+                                const color = score >= 80 ? '#10b981' : score >= 60 ? '#3b82f6' : score >= 40 ? '#f59e0b' : '#ef4444';
+                                return `
+                                    <div class="submission-card" id="submission-${idx}">
+                                        <div class="submission-header">
+                                            <div style="flex: 1;">
+                                                <h3 style="font-size: 20px; margin-bottom: 5px;">${submission.customerInfo.companyName}</h3>
+                                                <p style="color: #6b7280;">${submission.customerInfo.contactPerson} • ${submission.customerInfo.email}</p>
+                                                <p style="color: #9ca3af; font-size: 14px;">
+                                                    Submitted: ${new Date(submission.submittedAt).toLocaleString()}
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <div class="submission-score" style="color: ${color};">${submission.totalScore}</div>
+                                                <p style="text-align: right; color: #6b7280; font-size: 14px;">${submission.readiness_level}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="submission-details" id="details-${idx}" style="display: none;">
+                                            <div class="detail-grid">
+                                                ${submission.categoryScores.map(cat => `
+                                                    <div class="detail-item">
+                                                        <div class="detail-label">${cat.name}</div>
+                                                        <div class="detail-value">${cat.score}%</div>
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                            
+                                            <div style="background: #fef3c7; border: 1px solid #fbbf24; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                                                <p style="font-weight: 600; margin-bottom: 10px;">Recommendations:</p>
+                                                <ul style="list-style: disc; padding-left: 20px; color: #78350f;">
+                                                    ${submission.recommendations.recommendations.slice(0, 3).map(rec => `<li style="margin-bottom: 5px;">${rec}</li>`).join('')}
+                                                </ul>
+                                                <p style="margin-top: 15px; color: #78350f;">
+                                                    <strong>Timeline:</strong> ${submission.recommendations.timeline}
+                                                </p>
+                                            </div>
+                                            
+                                            <div style="display: flex; gap: 15px;">
+                                                <button class="btn btn-primary" style="flex: 1;" 
+                                                        onclick="downloadSubmission(${idx})">
+                                                    📥 Download Full Report
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="btn btn-secondary" 
+                                                style="width: 100%; margin-top: 15px;"
+                                                onclick="toggleDetails(${idx})">
+                                            <span id="toggle-text-${idx}">▼ View Details</span>
+                                        </button>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `}
+                </div>
+            `;
+        }
+
+        function render() {
+            const app = document.getElementById('app');
+            
+            if (state.viewMode === 'dashboard') {
+                app.innerHTML = renderDashboard();
+                return;
+            }
+            
+            const progressPercent = ((state.currentSection + 1) / assessmentCategories.length) * 100;
+            
+            app.innerHTML = `
+                <div class="container">
+                    <div class="header-actions">
+                        <div>
+                            <h1>DLP Readiness Assessment</h1>
+                            <p class="subtitle">Comprehensive evaluation for MSME DLP implementation</p>
+                        </div>
+                        <button class="btn btn-purple" onclick="switchView('dashboard')">
+                            📊 Vendor Dashboard (${state.submissions.length})
+                        </button>
+                    </div>
+                    
+                    ${renderCustomerInfo()}
+                    
+                    ${renderProgressTabs()}
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: ${progressPercent}%;"></div>
+                    </div>
+                    
+                    ${renderCurrentSection()}
+                    ${renderResults()}
+                    ${renderExportSection()}
+                </div>
+            `;
+        }
+
+        // Event Handlers
+        function updateCustomerInfo(field, value) {
+            state.customerInfo[field] = value;
+        }
+
+        function updateScore(criteriaId, value) {
+            state.scores[criteriaId] = parseInt(value);
+            render();
+        }
+
+        function changeSection(index) {
+            if (index >= 0 && index < assessmentCategories.length) {
+                state.currentSection = index;
+                render();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function switchView(view) {
+            state.viewMode = view;
+            if (view === 'dashboard') {
+                loadAllSubmissions();
+            }
+            render();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleDetails(idx) {
+            const details = document.getElementById(`details-${idx}`);
+            const toggleText = document.getElementById(`toggle-text-${idx}`);
+            
+            if (details.style.display === 'none') {
+                details.style.display = 'block';
+                toggleText.textContent = '▲ Hide Details';
+            } else {
+                details.style.display = 'none';
+                toggleText.textContent = '▼ View Details';
+            }
+        }
+
+        function downloadSubmission(idx) {
+            const submission = state.submissions[idx];
+            const blob = new Blob([submission.fullReport], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `DLP_Assessment_${submission.customerInfo.companyName}_${new Date(submission.submittedAt).toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize
+        loadAllSubmissions();
+        render();
+    </script>
+</body>
+</html>
